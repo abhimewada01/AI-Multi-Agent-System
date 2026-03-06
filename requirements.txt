@@ -1,6 +1,6 @@
 # AI Multi-Agent System - Python Dependencies
 
-# Build Tools (important for Render deploy)
+# Build Tools
 setuptools
 wheel
 gunicorn
@@ -10,7 +10,7 @@ fastapi==0.104.1
 uvicorn[standard]==0.24.0
 python-multipart==0.0.6
 
-# AI/ML Framework
+# AI Framework
 langchain==0.0.350
 langchain-openai==0.0.2
 openai==1.6.1
@@ -29,4 +29,3 @@ aiofiles==23.2.1
 # Utilities
 tiktoken==0.5.2
 numpy==1.26.3
-pandas==2.1.4
