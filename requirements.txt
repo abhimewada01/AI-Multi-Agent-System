@@ -29,7 +29,7 @@ aiofiles==23.2.1
 # Utilities
 tiktoken==0.5.2
 numpy==1.26.4
-pandas==2.0.3
+pandas==2.2.2
 
 # Development & Testing
 pytest==7.4.3
