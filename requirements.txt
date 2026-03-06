@@ -27,5 +27,5 @@ requests==2.31.0
 aiofiles==23.2.1
 
 # Utilities
-tiktoken==0.5.2
+tiktoken==0.7.0
 numpy==1.26.3
