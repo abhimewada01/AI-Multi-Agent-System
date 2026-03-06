@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Test</title>
+</head>
+<body>
+    <h1>Complete API Test</h1>
+    <button onclick="testCompleteFlow()">Test Complete Flow</button>
+    <div id="result"></div>
+    
+    <script>
+        async function testCompleteFlow() {
+            try {
+                console.log('Testing API call...');
+                
+                const response = await fetch('http://127.0.0.1:8000/process-task', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ task: "build ai agents" })
+                });
+                
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Response data:', result);
+                
+                document.getElementById('result').innerHTML = `
+                    <h2>✅ Success!</h2>
+                    <p><strong>Research:</strong> ${result.research}</p>
+                    <p><strong>Plan:</strong> ${result.plan}</p>
+                    <p><strong>Code:</strong> ${result.code}</p>
+                    <p><strong>Execution:</strong> ${result.execution}</p>
+                    <p><strong>Time:</strong> ${result.total_time}s</p>
+                `;
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `<p style="color: red;">❌ Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
