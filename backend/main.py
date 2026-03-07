@@ -35,7 +35,7 @@ app.add_middleware(
 )
 
 # Serve static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 # Pydantic models
 class TaskRequest(BaseModel):
