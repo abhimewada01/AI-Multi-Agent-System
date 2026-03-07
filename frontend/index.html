@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Multi-Agent System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>AI Multi-Agent System</h1>
+                </div>
+                <div class="status-indicator">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-container">
+                    <h2>Enter Your Task</h2>
+                    <p>Describe what you want the AI agents to accomplish</p>
+                    <div class="task-input-group">
+                        <textarea 
+                            id="taskInput" 
+                            placeholder="Example: Build a simple Python API for user management..."
+                            rows="3"
+                        ></textarea>
+                        <div class="input-actions">
+                            <button id="clearBtn" class="btn btn-secondary">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                            <button id="submitBtn" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Start Processing
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agent Progress Section -->
+            <section class="agents-section">
+                <h2>Agent Progress</h2>
+                <div class="agents-grid">
+                    <!-- Research Agent -->
+                    <div class="agent-card" id="researchAgent">
+                        <div class="agent-header">
+                            <div class="agent-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="agent-info">
+                                <h3>Research Agent</h3>
+                                <span class="agent-status">Waiting</span>
+                            </div>
+                        </div>
+                        <div class="agent-content">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="researchProgress"></div>
+                            </div>
+                            <div class="agent-result" id="researchResult"></div>
+                        </div>
+                    </div>
+
+                    <!-- Planning Agent -->
+                    <div class="agent-card" id="planningAgent">
+                        <div class="agent-header">
+                            <div class="agent-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="agent-info">
+                                <h3>Planning Agent</h3>
+                                <span class="agent-status">Waiting</span>
+                            </div>
+                        </div>
+                        <div class="agent-content">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="planningProgress"></div>
+                            </div>
+                            <div class="agent-result" id="planningResult"></div>
+                        </div>
+                    </div>
+
+                    <!-- Coding Agent -->
+                    <div class="agent-card" id="codingAgent">
+                        <div class="agent-header">
+                            <div class="agent-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="agent-info">
+                                <h3>Coding Agent</h3>
+                                <span class="agent-status">Waiting</span>
+                            </div>
+                        </div>
+                        <div class="agent-content">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="codingProgress"></div>
+                            </div>
+                            <div class="agent-result" id="codingResult"></div>
+                        </div>
+                    </div>
+
+                    <!-- Execution Agent -->
+                    <div class="agent-card" id="executionAgent">
+                        <div class="agent-header">
+                            <div class="agent-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="agent-info">
+                                <h3>Execution Agent</h3>
+                                <span class="agent-status">Waiting</span>
+                            </div>
+                        </div>
+                        <div class="agent-content">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="executionProgress"></div>
+                            </div>
+                            <div class="agent-result" id="executionResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <h2>Results</h2>
+                <div class="results-container">
+                    <div class="result-tabs">
+                        <button class="tab-btn active" data-tab="summary">
+                            <i class="fas fa-file-alt"></i> Summary
+                        </button>
+                        <button class="tab-btn" data-tab="research">
+                            <i class="fas fa-search"></i> Research
+                        </button>
+                        <button class="tab-btn" data-tab="planning">
+                            <i class="fas fa-tasks"></i> Planning
+                        </button>
+                        <button class="tab-btn" data-tab="code">
+                            <i class="fas fa-code"></i> Code
+                        </button>
+                        <button class="tab-btn" data-tab="final">
+                            <i class="fas fa-check-circle"></i> Final Output
+                        </button>
+                    </div>
+                    <div class="result-content">
+                        <div class="tab-pane active" id="summary">
+                            <div id="summaryContent">
+                                <p class="placeholder">Results will appear here after processing...</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="research">
+                            <div id="researchContent">
+                                <p class="placeholder">Research results will appear here...</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="planning">
+                            <div id="planningContent">
+                                <p class="placeholder">Planning results will appear here...</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="code">
+                            <div id="codeContent">
+                                <p class="placeholder">Code results will appear here...</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="final">
+                            <div id="finalContent">
+                                <p class="placeholder">Final output will appear here...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 AI Multi-Agent System. Built with FastAPI & LangChain.</p>
+                <div class="footer-links">
+                    <a href="#" id="aboutBtn">About</a>
+                    <a href="#" id="helpBtn">Help</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processing your request...</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <p>Modal content goes here...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
